@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000", // Frontend URL
+        origin: "*", // frontend URL here later 
         methods: ["GET", "POST"],
     },
 });
@@ -193,7 +193,7 @@ io.on("connection", (socket) => {
 });
 
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
     console.log(`Backend server running on http://localhost:${PORT}`);
 });
